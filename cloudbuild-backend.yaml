@@ -5,7 +5,7 @@ steps:
       [
         'build',
         '-t',
-        'us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy:$COMMIT_SHA',
+        'us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy/your-image-name:$COMMIT_SHA',
         '-f',
         'wally-registry-backend/Dockerfile',
         '.',
@@ -13,7 +13,7 @@ steps:
 
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy:$COMMIT_SHA']
+    args: ['push', 'us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy/your-image-name:$COMMIT_SHA']
 
    # Deploy container image to Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
@@ -23,7 +23,7 @@ steps:
         "deploy",
         "wally-registry-backend",
         "--image",
-        "us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy:$COMMIT_SHA",
+        "us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy/your-image-name:$COMMIT_SHA",
         "--region",
         "us-central1",
         "--platform",
