@@ -1,15 +1,15 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-  args:
-    [
-      'build',
-      '-t',
-      'us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy:$COMMIT_SHA',
-      '-f',
-      'wally-registry-backend/Dockerfile',
-      '.',
-    ]
+    args:
+      [
+        'build',
+        '-t',
+        'us-central1-docker.pkg.dev/wally-registry-403720/cloud-run-source-deploy:$COMMIT_SHA',
+        '-f',
+        'wally-registry-backend/Dockerfile',
+        '.',
+      ]
 
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
